@@ -1,18 +1,16 @@
-fetch('https://pokeapi.co/api/v2/pokemon/')
-    .then(function (response) {
-        console.log(response)  
-        return response.json()
-    })
-    .then(function(data){
-        templateGenerator(data)
-});
-
-function templateGenerator(list) {
-    console.log(list);
-    let template = '';
+function namePokemon (list){
+    let htm = '';
+    console.log(list.results)
     list.results.forEach(function (el) {
-        template += '<p>' + el.name + '</p>';
+        htm += "<p>"+el.name+"</p>"
     });
-    document.querySelector('body').innerHTML = template;
+    document.querySelector('body').innerHTML = htm;
 }
 
+fetch('https://pokeapi.co/api/v2/pokemon/')
+.then(function (response) {
+   return response.json()
+})
+.then(function (data){
+    namePokemon(data)
+});
