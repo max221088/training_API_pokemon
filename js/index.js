@@ -1,11 +1,10 @@
 function namePokemon (list){
-    let htm = '';
-    console.log(list.results)
+    let tableItems = '';
     list.results.forEach(function (el) {
-        htm += "<p>"+el.name+"</p>"
+        tableItems += "<tr> <td>"+el.name+"</td><td>"+el.url+"</td></tr>";
     });
-    document.querySelector('body').innerHTML = htm;
-}
+    document.querySelector('tbody').innerHTML = tableItems;
+};
 
 fetch('https://pokeapi.co/api/v2/pokemon/')
 .then(function (response) {
